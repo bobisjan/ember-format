@@ -2,9 +2,13 @@
 
 This README outlines the details of collaborating on this Ember addon.
 
+## Documentation
+
+* visit `wiki` pages at this [repository](https://github.com/bobisjan/ember-format/wiki)
+
 ## Installation
 
-* `git clone` this repository
+* `git clone` this [repository](https://github.com/bobisjan/ember-format)
 * `npm install`
 * `bower install`
 

@@ -1,6 +1,6 @@
 # Ember Format [![Build Status](https://travis-ci.org/bobisjan/ember-format.svg?branch=master)](https://travis-ci.org/bobisjan/ember-format)
 
-This README outlines the details of collaborating on this Ember addon.
+An add-on for i18n and l10n of the Ember applications.
 
 ## Documentation
 

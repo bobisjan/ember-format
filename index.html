@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>Ember Format</h1>
-        <p></p>
+        <p>Internationalize ambitious web applications.</p>
 
         <p class="view"><a href="https://github.com/bobisjan/ember-format">View the Project on GitHub <small>bobisjan/ember-format</small></a></p>
 
@@ -32,13 +32,57 @@
 <a id="ember-format-" class="anchor" href="#ember-format-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ember Format <a href="https://travis-ci.org/bobisjan/ember-format"><img src="https://travis-ci.org/bobisjan/ember-format.svg?branch=master" alt="Build Status"></a>
 </h1>
 
-<p>An add-on for i18n and l10n of the Ember applications.</p>
+<p><strong>[WIP] Ember Format requires Ember 1.10.0 (in beta)</strong></p>
 
-<h2>
-<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+<p><code>Ember Format</code> allows developers to internationalize their ambitious applications.</p>
+
+<p>The formatting capabilities rely on the set of <a href="http://formatjs.io/">Format.js</a>'s core libraries and <code>Intl</code>'s formatting objects:</p>
 
 <ul>
-<li>visit <code>wiki</code> pages at this <a href="https://github.com/bobisjan/ember-format/wiki">repository</a>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat">Intl.DateTimeFormat</a>,</li>
+<li>
+<a href="https://github.com/yahoo/intl-messageformat">Intl MessageFormat</a>,</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat">Intl.NumberFormat</a>,</li>
+<li>
+<a href="https://github.com/yahoo/intl-relativeformat">Intl RelativeFormat</a>.</li>
+</ul>
+
+<p>These APIs are built on the following industry standards:</p>
+
+<ul>
+<li>
+<a href="http://www.ecma-international.org/ecma-402/1.0/">ECMAScript Internationalization API</a>,</li>
+<li>
+<a href="http://cldr.unicode.org/">Unicode CLDR</a>,</li>
+<li>
+<a href="http://userguide.icu-project.org/formatparse/messages">ICU Message syntax</a>.</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install from the project's folder.</p>
+
+<div class="highlight highlight-sh"><pre>$ ember install:addon ember-format</pre></div>
+
+<p>Generate application's default locale with CLDR data (and any <a href="https://github.com/bobisjan/ember-format/blob/master/addon/utils/locale.js#L7">other</a>).</p>
+
+<div class="highlight highlight-sh"><pre>$ ember generate locale en</pre></div>
+
+<p>Register default locale in the configuration file.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c">// config/environment.js</span>
+APP<span class="pl-k">:</span> {
+  LOCALE<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ul>
+<li>visit <code>dummy</code> application in this <a href="https://github.com/bobisjan/ember-format/tree/master/tests/dummy">repository</a>
 </li>
 </ul>
 

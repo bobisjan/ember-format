@@ -6,27 +6,9 @@ An add-on for i18n and l10n of the Ember applications.
 
 * visit `wiki` pages at this [repository](https://github.com/bobisjan/ember-format/wiki)
 
-## Installation
+## Contribution
 
-* `git clone` this [repository](https://github.com/bobisjan/ember-format)
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember serve`
-* visit `dummy` application at http://localhost:4200
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using `ember-cli`, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+* visit [`CONTRIBUTING.md`](https://github.com/bobisjan/ember-format/blob/master/CONTRIBUTING.md)
 
 ## License
 

@@ -8,7 +8,7 @@ An add-on for i18n and l10n of the Ember applications.
 
 ## Contribution
 
-* visit [`CONTRIBUTING.md`](https://github.com/bobisjan/ember-format/blob/master/CONTRIBUTING.md)
+* visit [CONTRIBUTING.md](https://github.com/bobisjan/ember-format/blob/master/CONTRIBUTING.md)
 
 ## License
 

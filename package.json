@@ -44,7 +44,7 @@
     "grunt-extract-cldr-data": "1.1.0",
     "intl": "^0.1.4"
   },
-  "description": "An add-on for i18n and l10n of the Ember applications.",
+  "description": "Internationalize ambitious web applications.",
   "keywords": [
     "ember-addon",
     "globalization",

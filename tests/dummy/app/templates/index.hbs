@@ -1,0 +1,39 @@
+<h3>Date & Time</h3>
+
+<ul>
+  <li>{{format 'date' model.date}}</li>
+  <li>{{format 'date' model.date weekday="long"}}</li>
+  <li>{{format 'date' model.date day="numeric" month="long" year="numeric"}}</li>
+</ul>
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat" target="_blank">Intl.DateTimeFormat at MDN</a>
+
+<h3>Message</h3>
+
+<ul>
+  <li>{{format 'message' model.car}}</li>
+  <li>{{format 'message' model.hello name='Ember'}}</li>
+  <li>{{format 'message' model.photos numPhotos=model.numPhotos}}</li>
+</ul>
+
+<a href="https://github.com/yahoo/intl-messageformat" target="_blank">IntlMessageFormat at GitHub</a>
+
+<h3>Number</h3>
+
+<ul>
+  <li>{{format 'number' model.number}}</li>
+  <li>{{format 'number' model.amount style="currency" currency="USD"}}</li>
+  <li>{{format 'number' model.percent style="percent"}}</li>
+</ul>
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat" target="_blank">Intl.NumberFormat at MDN</a>
+
+<h3>Relative</h3>
+
+<ul>
+  <li>{{format 'relative' model.yesterday}}</li>
+  <li>{{format 'relative' model.beforeYesterday}}</li>
+  <li>{{format 'relative' model.lastMonth}}</li>
+</ul>
+
+<a href="https://github.com/yahoo/intl-relativeformat" target="_blank">IntlRelativeFormat at GitHub</a>

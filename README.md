@@ -1,4 +1,4 @@
-# Ember Format [![Build Status](https://travis-ci.org/bobisjan/ember-format.svg?branch=master)](https://travis-ci.org/bobisjan/ember-format)
+# Ember Format [![Build Status](https://travis-ci.org/bobisjan/ember-format.svg?branch=master)](https://travis-ci.org/bobisjan/ember-format) [![npm version](https://badge.fury.io/js/ember-format.svg)](http://badge.fury.io/js/ember-format)
 
 **[WIP] Ember Format requires Ember 1.10.0 (in beta)**
 

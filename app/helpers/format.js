@@ -7,6 +7,8 @@ var get = Ember.get;
 var _format = function _format(format, input, options) {
   var formatter = this.container.lookup('formatter:' + format);
 
+  Ember.assert('You specified `' + format +  '` in your template, but a formatter for `' + format + '` could not be found.', !!formatter);
+
   return formatter.format(input, options);
 };
 

@@ -187,6 +187,8 @@ export function optionsFor(options) {
     };
   }
 
+  Ember.assert('You have to specify a default locale for the application.', options && options.base);
+
   if (!options.locales) {
     options.locales = locales;
   }

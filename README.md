@@ -1,10 +1,48 @@
 # Ember Format [![Build Status](https://travis-ci.org/bobisjan/ember-format.svg?branch=master)](https://travis-ci.org/bobisjan/ember-format)
 
-An add-on for i18n and l10n of the Ember applications.
+**[WIP] Ember Format requires Ember 1.10.0 (in beta)**
 
-## Documentation
+`Ember Format` allows developers to internationalize their ambitious applications.
 
-* visit `wiki` pages at this [repository](https://github.com/bobisjan/ember-format/wiki)
+The formatting capabilities rely on the set of [Format.js](http://formatjs.io/)'s core libraries and `Intl`'s formatting objects:
+
+* [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat),
+* [Intl MessageFormat](https://github.com/yahoo/intl-messageformat),
+* [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat),
+* [Intl RelativeFormat](https://github.com/yahoo/intl-relativeformat).
+
+These APIs are built on the following industry standards:
+
+* [ECMAScript Internationalization API](http://www.ecma-international.org/ecma-402/1.0/),
+* [Unicode CLDR](http://cldr.unicode.org/),
+* [ICU Message syntax](http://userguide.icu-project.org/formatparse/messages).
+
+## Installation
+
+Install from the project's folder.
+
+```sh
+$ ember install:addon ember-format
+```
+
+Generate application's default locale with CLDR data (and any [other](https://github.com/bobisjan/ember-format/blob/master/addon/utils/locale.js#L7)).
+
+```sh
+$ ember generate locale en
+```
+
+Register default locale in the configuration file.
+
+```js
+// config/environment.js
+APP: {
+  LOCALE: 'en'
+}
+```
+
+## Usage
+
+* visit `dummy` application in this [repository](https://github.com/bobisjan/ember-format/tree/master/tests/dummy)
 
 ## Contribution
 

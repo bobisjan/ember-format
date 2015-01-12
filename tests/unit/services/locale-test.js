@@ -3,13 +3,27 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('service:locale', 'LocaleService', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
-});
+moduleFor('service:locale', 'LocaleService');
 
-// Replace this with your real tests.
 test('it exists', function() {
   var service = this.subject();
   ok(service);
+});
+
+test('it streams itself', function() {
+  expect(4);
+
+  var service = this.subject();
+  var stream = service.get('stream');
+
+  service.set('code', 'en');
+
+  stream.subscribe(function() {
+    ok(stream.value() === service);
+    ok(stream.value().get('code') === 'cs');
+  });
+
+  service.set('code', 'cs');
+  ok(stream.value() === service);
+  ok(stream.value().get('code') === 'cs');
 });

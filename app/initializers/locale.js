@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { locales, optionsFor, setup } from 'ember-format/utils/locale';
+import { optionsFor, setup } from 'ember-format/utils/locale';
 import IntlMessageFormat from 'npm:intl-messageformat';
 import IntlRelativeFormat from 'npm:intl-relativeformat';
 

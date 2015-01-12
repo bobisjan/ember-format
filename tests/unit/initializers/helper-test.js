@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'ember-format/initializers/helper';
+import { initialize } from 'dummy/initializers/helper';
 
 var container, application;
 
@@ -13,10 +13,8 @@ module('HelperInitializer', {
   }
 });
 
-// Replace this with your real tests.
-test('it works', function() {
+test('it registers format helper', function() {
   initialize(container, application);
 
-  // you would normally confirm the results of the initializer here
-  ok(true);
+  ok(Ember.HTMLBars.helpers['format']);
 });

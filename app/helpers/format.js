@@ -4,15 +4,22 @@ import { scanArray, scanHash, readArray, readHash, subscribe } from 'ember-forma
 
 var get = Ember.get;
 
-var _format = function _format(format, input, options) {
-  var formatter = this.container.lookup('formatter:' + format);
+export function format(params, hash/*, options, env*/) {
+  Ember.assert('You passed `' + params.length + '` parameters in your template, but just formatter and input are required.', params.length === 2);
 
-  Ember.assert('You specified `' + format +  '` in your template, but a formatter for `' + format + '` could not be found.', !!formatter);
+  var type = params[0];
+  var input = params[1];
 
-  return formatter.format(input, options);
-};
+  var formatter = this.container.lookup('formatter:' + type);
 
-export default function format(params, hash, options, env) {
+  Ember.assert('You specified `' + type +  '` in your template, but a formatter for `' + type + '` could not be found.', !!formatter);
+
+  return formatter.format(input, hash);
+}
+
+// Find a better way to define bound helper with custom stream,
+// not just copying from Ember's makeBoundHelper.
+export default function formatHelper(params, hash, options, env) {
   var view = this;
   var numParams = params.length;
   var param, prop;
@@ -20,16 +27,15 @@ export default function format(params, hash, options, env) {
   Ember.assert("makeBoundHelper generated helpers do not support use with blocks", !options.template);
 
   function valueFn() {
-    var _params = readArray(params);
-    return _format.call(view, _params[0], _params[1], readHash(hash));
+    return format.call(view, readArray(params), readHash(hash), options, env);
   }
-
-  var hasStream = scanArray(params) || scanHash(hash);
 
   var localeStream = get(this, 'locale.stream');
   var lazyValue = new Stream(valueFn);
 
   localeStream.subscribe(lazyValue.notify, lazyValue);
+
+  var hasStream = scanArray(params) || scanHash(hash);
 
   if (hasStream) {
     for (var i = 0; i < numParams; i++) {

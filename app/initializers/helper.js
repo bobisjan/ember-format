@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import format from '../helpers/format';
+import formatHelper from '../helpers/format';
 
 export function initialize(/*container, application*/) {
-  Ember.HTMLBars.registerHelper('format', format);
+  Ember.HTMLBars.registerHelper('format', formatHelper);
 }
 
 export default {

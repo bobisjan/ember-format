@@ -4,7 +4,7 @@
 
 `Ember Format` allows developers to internationalize their ambitious applications.
 
-The formatting capabilities rely on the set of [Format.js](http://formatjs.io/)'s core libraries and `Intl`'s formatting objects:
+The formatting capabilities rely on the set of [FormatJS](http://formatjs.io/)'s core libraries and `Intl`'s formatting objects:
 
 * [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat),
 * [Intl MessageFormat](https://github.com/yahoo/intl-messageformat),

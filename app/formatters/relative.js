@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import Formatter from 'ember-format/formatters/base';
 import createFormatCache from 'npm:intl-format-cache';
-import IntlRelativeFormat from 'npm:intl-relativeformat';
+/* import IntlRelativeFormat from 'npm:intl-relativeformat'; */
+/* global IntlRelativeFormat */
 
 var get = Ember.get;
 

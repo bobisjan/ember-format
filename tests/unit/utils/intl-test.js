@@ -1,9 +1,17 @@
-import intl from 'ember-format/utils/intl';
+import Intl from 'dummy/utils/intl';
 
-module('intl');
+module('Intl');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var result = intl();
-  ok(result);
+test('it creates DateTimeFormat instances', function() {
+  var instance = new Intl.DateTimeFormat();
+
+  ok(instance);
+  ok(instance.format);
+});
+
+test('it creates NumberFormat instances', function() {
+  var instance = new Intl.DateTimeFormat();
+
+  ok(instance);
+  ok(instance.format);
 });

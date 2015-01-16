@@ -36,7 +36,7 @@
 
 <p><code>Ember Format</code> allows developers to internationalize their ambitious applications.</p>
 
-<p>The formatting capabilities rely on the set of <a href="http://formatjs.io/">Format.js</a>'s core libraries and <code>Intl</code>'s formatting objects:</p>
+<p>The formatting capabilities rely on the set of <a href="http://formatjs.io/">FormatJS</a>'s core libraries and <code>Intl</code>'s formatting objects:</p>
 
 <ul>
 <li>
@@ -73,7 +73,7 @@
 
 <p>Register default locale in the configuration file.</p>
 
-<div class="highlight highlight-js"><pre><span class="pl-c">// config/environment.js</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// config/environment.js</span>
 APP<span class="pl-k">:</span> {
   LOCALE<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>
 }</pre></div>
@@ -81,9 +81,51 @@ APP<span class="pl-k">:</span> {
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
+<h3>
+<a id="set-up-a-locale" class="anchor" href="#set-up-a-locale" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set Up a Locale</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// locales/en.js</span>
+<span class="pl-s">export</span> <span class="pl-k">default</span> {
+  locales<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>en<span class="pl-pds">'</span></span>,
+  messages<span class="pl-k">:</span> {
+    car<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>a car<span class="pl-pds">'</span></span>
+  },
+  formats<span class="pl-k">:</span> { }
+};</pre></div>
+
+<h3>
+<a id="routes-model" class="anchor" href="#routes-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Route's model</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// routes/index.js</span>
+<span class="pl-k">import</span> Ember from <span class="pl-s1"><span class="pl-pds">'</span>ember<span class="pl-pds">'</span></span>;
+
+<span class="pl-s">export</span> <span class="pl-k">default</span> Ember.Route.extend({
+
+  <span class="pl-en">model</span>: <span class="pl-st">function</span>() {
+    <span class="pl-k">return</span> {
+      createdAt<span class="pl-k">:</span> <span class="pl-s3">Date</span>.now(),
+      price<span class="pl-k">:</span> <span class="pl-c1">1234</span>,
+      currency<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>USD<span class="pl-pds">'</span></span>,
+      ago<span class="pl-k">:</span> <span class="pl-s3">Date</span>.now() <span class="pl-k">-</span> (<span class="pl-c1">24</span> <span class="pl-k">*</span> <span class="pl-c1">60</span> <span class="pl-k">*</span> <span class="pl-c1">60</span> <span class="pl-k">*</span> <span class="pl-c1">1000</span>)
+    };
+  }
+
+});</pre></div>
+
+<h3>
+<a id="template-helpers" class="anchor" href="#template-helpers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template Helpers</h3>
+
+<div class="highlight highlight-handlebars"><pre><span class="pl-c">{{! templates/index.js }}</span>
+<span class="pl-sc">{{</span><span class="pl-v">format</span> <span class="pl-s1"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span> 1234<span class="pl-sc">}}</span>
+<span class="pl-sc">{{</span><span class="pl-v">format-date</span> model.createdAt<span class="pl-sc">}}</span>
+<span class="pl-sc">{{</span><span class="pl-v">format-message</span> <span class="pl-s1"><span class="pl-pds">"</span>car<span class="pl-pds">"</span></span><span class="pl-sc">}}</span>
+<span class="pl-sc">{{</span><span class="pl-v">format-number</span> model.price style=<span class="pl-s1"><span class="pl-pds">"</span>currency<span class="pl-pds">"</span></span> currency=model.currency<span class="pl-sc">}}</span>
+<span class="pl-sc">{{</span><span class="pl-v">format-relative</span> model.ago<span class="pl-sc">}}</span></pre></div>
+
+<p><em>You can also specify formatting options using a single attribute <code>options</code>.</em></p>
+
 <ul>
-<li>visit <code>dummy</code> application in this <a href="https://github.com/bobisjan/ember-format/tree/master/tests/dummy">repository</a>
-</li>
+<li>visit <code>dummy</code> application in this <a href="https://github.com/bobisjan/ember-format/tree/master/tests/dummy">repository</a> for more examples</li>
 </ul>
 
 <h2>

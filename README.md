@@ -33,7 +33,7 @@ $ ember generate locale en
 
 Register default locale in the configuration file.
 
-```js
+```javascript
 // config/environment.js
 APP: {
   LOCALE: 'en'
@@ -42,7 +42,53 @@ APP: {
 
 ## Usage
 
-* visit `dummy` application in this [repository](https://github.com/bobisjan/ember-format/tree/master/tests/dummy)
+### Set Up a Locale
+
+```javascript
+// locales/en.js
+export default {
+  locales: 'en',
+  messages: {
+    car: 'a car'
+  },
+  formats: { }
+};
+```
+
+### Route's model
+
+```javascript
+// routes/index.js
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+
+  model: function() {
+    return {
+      createdAt: Date.now(),
+      price: 1234,
+      currency: 'USD',
+      ago: Date.now() - (24 * 60 * 60 * 1000)
+    };
+  }
+
+});
+```
+
+### Template Helpers
+
+```handlebars
+{{! templates/index.js }}
+{{format "number" 1234}}
+{{format-date model.createdAt}}
+{{format-message "car"}}
+{{format-number model.price style="currency" currency=model.currency}}
+{{format-relative model.ago}}
+```
+
+*You can also specify formatting options using a single attribute `options`.*
+
+* visit `dummy` application in this [repository](https://github.com/bobisjan/ember-format/tree/master/tests/dummy) for more examples
 
 ## Contribution
 

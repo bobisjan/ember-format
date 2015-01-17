@@ -4,6 +4,8 @@ var path = require('path');
 var Promise = require('ember-cli/lib/ext/promise');
 var serialize = require('serialize-javascript');
 var SilentError = require('ember-cli/lib/errors/silent');
+
+var removeFile = Promise.denodeify(fs.remove);
 var writeFile = Promise.denodeify(fs.outputFile);
 
 module.exports = {
@@ -28,8 +30,7 @@ module.exports = {
 
   beforeInstall: function(options) {
     var code = this.localeCodeFor(options);
-    var relativePath = path.join('app', 'locales', code + '-cldr.js');
-    var fullPath = path.join(this.project.root, relativePath);
+    var fullPath = this.pathToCldrData(code);
 
     var locale = {
       locale: code,
@@ -44,6 +45,13 @@ module.exports = {
     var contents = 'export default ' + serialize(locale) + ';';
 
     return writeFile(fullPath, contents);
+  },
+
+  afterUninstall: function(options) {
+    var code = this.localeCodeFor(options);
+    var fullPath = this.pathToCldrData(code);
+
+    return removeFile(fullPath);
   },
 
   localeCodeFor: function(options) {
@@ -106,6 +114,12 @@ module.exports = {
 
   extractFields: function(locale) {
     return cldr.extractFields(locale);
+  },
+
+  pathToCldrData: function(code) {
+    var relativePath = path.join('app', 'locales', code + '-cldr.js');
+
+    return path.join(this.project.root, relativePath);
   }
 
 };

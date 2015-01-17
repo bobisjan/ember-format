@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^1.0.0",
+    "cldr": "^2.3.2",
     "ember-browserify": "^0.4.0",
     "ember-cli": "^0.1.6",
     "ember-cli-content-security-policy": "0.3.0",
@@ -37,6 +38,7 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
+    "fs-extra": "^0.14.0",
     "glob": "^4.0.5",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",

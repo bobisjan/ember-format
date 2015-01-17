@@ -17,6 +17,7 @@
   "author": "Jan Bobisud",
   "license": "MIT",
   "dependencies": {
+    "chalk": "0.5.1",
     "cldr": "^2.3.2",
     "fs-extra": "^0.14.0",
     "intl": "^0.1.4",

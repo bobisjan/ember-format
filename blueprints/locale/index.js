@@ -1,3 +1,4 @@
+var chalk = require('chalk');
 var cldr = require('cldr');
 var fs = require('fs-extra');
 var path = require('path');
@@ -29,29 +30,43 @@ module.exports = {
   },
 
   beforeInstall: function(options) {
+    var ui = this.ui;
     var code = this.localeCodeFor(options);
-    var fullPath = this.pathToCldrData(code);
-
-    var locale = {
-      locale: code,
-      pluralRuleFunction: this.extractPluralRuleFunction(code),
-      fields: this.extractFields(code)
-    }
+    var locale = this.localeFor(code);
 
     if (!this.isSupportedLocale(locale)) {
-      return Promise.reject(new SilentError("The locale `" + code + "` is not supported."));
+      return Promise.reject(new SilentError('The locale `' + code + '` is not supported.'));
     }
 
+    var displayPath = this.dataDisplayPath(code);
+    var fullPath = path.join(this.project.root, displayPath);
     var contents = 'export default ' + serialize(locale) + ';';
 
-    return writeFile(fullPath, contents);
+    return writeFile(fullPath, contents).then(function() {
+      ui.writeLine('  ' + chalk.green('create') + ' ' + displayPath);
+    });
   },
 
   afterUninstall: function(options) {
+    var ui = this.ui;
     var code = this.localeCodeFor(options);
-    var fullPath = this.pathToCldrData(code);
+    var displayPath = this.dataDisplayPath(code);
+    var fullPath = path.join(this.project.root, displayPath);
 
-    return removeFile(fullPath);
+    return removeFile(fullPath).then(function() {
+      ui.writeLine('  ' + chalk.red('remove') + ' ' + displayPath);
+    });
+  },
+
+  localeFor: function(code) {
+    var pluralRuleFunction = this.extractPluralRuleFunction(code);
+    var fields = this.extractFields(code);
+
+    return {
+      locale: code,
+      pluralRuleFunction: pluralRuleFunction,
+      fields: fields
+    };
   },
 
   localeCodeFor: function(options) {
@@ -116,10 +131,8 @@ module.exports = {
     return cldr.extractFields(locale);
   },
 
-  pathToCldrData: function(code) {
-    var relativePath = path.join('app', 'locales', code + '-cldr.js');
-
-    return path.join(this.project.root, relativePath);
+  dataDisplayPath: function(code) {
+    return path.join('app', 'locales', code + '-cldr.js');
   }
 
 };

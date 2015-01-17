@@ -9,4 +9,5 @@ module.exports = {
   includedCommands: function() {
     return commands;
   }
+
 };

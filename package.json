@@ -17,6 +17,9 @@
   "author": "Jan Bobisud",
   "license": "MIT",
   "dependencies": {
+    "chalk": "0.5.1",
+    "cldr": "^2.3.2",
+    "fs-extra": "^0.14.0",
     "intl": "^0.1.4",
     "intl-format-cache": "2.0.2",
     "intl-messageformat": "1.0.2",
@@ -25,7 +28,6 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^1.0.0",
-    "cldr": "^2.3.2",
     "ember-browserify": "^0.4.0",
     "ember-cli": "^0.1.6",
     "ember-cli-content-security-policy": "0.3.0",
@@ -38,9 +40,7 @@
     "ember-data": "1.0.0-beta.12",
     "ember-export-application-global": "^1.0.0",
     "express": "^4.8.5",
-    "fs-extra": "^0.14.0",
-    "glob": "^4.0.5",
-    "intl": "^0.1.4"
+    "glob": "^4.0.5"
   },
   "description": "Internationalize ambitious web applications.",
   "keywords": [

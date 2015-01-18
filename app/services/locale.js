@@ -8,7 +8,7 @@ var observer = Ember.observer;
 
 export default Ember.Object.extend({
 
-  locales: {},
+  locales: null,
 
   code: null,
 
@@ -28,27 +28,44 @@ export default Ember.Object.extend({
 
   _notify: observer('code', function() {
     var stream = get(this, 'stream');
+
     stream.value(); // to set clean state on stream
     stream.notify();
   }),
 
+  displayName: computed('code', function() {
+    var code = get(this, 'code');
+
+    return this.displayNameFor(code);
+  }),
+
+  displayNameFor: function(code) {
+    var path = ['locales', code, 'displayName'].join('.');
+
+    return get(this, path);
+  },
+
   messages: computed('code', function() {
     var code = get(this, 'code');
+
     return this.messagesFor(code);
   }),
 
   messagesFor: function(code) {
     var path = ['locales', code, 'messages'].join('.');
+
     return get(this, path);
   },
 
   formats: computed('code', function() {
     var code = get(this, 'code');
+
     return this.formatsFor(code);
   }),
 
   formatsFor: function(code) {
     var path = ['locales', code, 'formats'].join('.');
+
     return get(this, path);
   }
 

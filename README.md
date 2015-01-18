@@ -90,6 +90,29 @@ export default Ember.Route.extend({
 
 * visit `dummy` application in this [repository](https://github.com/bobisjan/ember-format/tree/master/tests/dummy) for more examples
 
+### Change Application's Locale
+
+A [locale](https://github.com/bobisjan/ember-format/blob/master/app/services/locale.js#L9) is a service injected by default into:
+
+* application,
+* route,
+* controller,
+* component,
+* view.
+
+To change current locale, set the `code` property with one of the available locale's codes:
+
+```javascript
+// controllers/application.js
+changeLocaleToCzech: function() {
+  var locale = this.get('locale');
+
+  locale.set('code', 'cs');
+}
+```
+
+* visit [controllers/application.js](https://github.com/bobisjan/ember-format/blob/master/tests/dummy/app/controllers/application.js) and [templates/application.hbs](https://github.com/bobisjan/ember-format/blob/master/tests/dummy/app/templates/application.hbs#L3) to see example with [Ember.Select](http://emberjs.com/api/classes/Ember.Select.html)
+
 ## Contribution
 
 * visit [CONTRIBUTING.md](https://github.com/bobisjan/ember-format/blob/master/CONTRIBUTING.md)

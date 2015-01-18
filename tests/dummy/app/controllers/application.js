@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   locales: function() {
     var locales = this.get('locale.locales');
 
-    return locales.toArray().filterBy('enabled', true).mapBy('code');
+    return locales.toArray().filterBy('enabled', true);
   }.property('locale.locales.@each.enabled'),
 
   selectedLocaleDidChange: function() {

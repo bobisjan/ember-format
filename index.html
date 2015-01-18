@@ -128,6 +128,33 @@ APP<span class="pl-k">:</span> {
 <li>visit <code>dummy</code> application in this <a href="https://github.com/bobisjan/ember-format/tree/master/tests/dummy">repository</a> for more examples</li>
 </ul>
 
+<h3>
+<a id="change-applications-locale" class="anchor" href="#change-applications-locale" aria-hidden="true"><span class="octicon octicon-link"></span></a>Change Application's Locale</h3>
+
+<p>A <a href="https://github.com/bobisjan/ember-format/blob/master/app/services/locale.js#L9">locale</a> is a service injected by default into:</p>
+
+<ul>
+<li>application,</li>
+<li>route,</li>
+<li>controller,</li>
+<li>component,</li>
+<li>view.</li>
+</ul>
+
+<p>To change current locale, set the <code>code</code> property with one of the available locale's codes:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// controllers/application.js</span>
+<span class="pl-en">changeLocaleToCzech</span>: <span class="pl-st">function</span>() {
+  <span class="pl-s">var</span> locale <span class="pl-k">=</span> <span class="pl-v">this</span>.get(<span class="pl-s1"><span class="pl-pds">'</span>locale<span class="pl-pds">'</span></span>);
+
+  locale.set(<span class="pl-s1"><span class="pl-pds">'</span>code<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>cs<span class="pl-pds">'</span></span>);
+}</pre></div>
+
+<ul>
+<li>visit <a href="https://github.com/bobisjan/ember-format/blob/master/tests/dummy/app/controllers/application.js">controllers/application.js</a> and <a href="https://github.com/bobisjan/ember-format/blob/master/tests/dummy/app/templates/application.hbs#L3">templates/application.hbs</a> to see example with <a href="http://emberjs.com/api/classes/Ember.Select.html">Ember.Select</a>
+</li>
+</ul>
+
 <h2>
 <a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribution</h2>
 

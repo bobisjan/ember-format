@@ -1,22 +1,9 @@
 import Ember from 'ember';
-import codes from './codes';
+import locales from './locales';
 
 var get = Ember.get;
 var keys = Ember.keys;
 var typeOf = Ember.typeOf;
-
-var locales = {};
-
-for (var i = 0, len = codes.length; i < len; i++) {
-  var key = codes[i];
-
-  locales[key] = {
-    code: key,
-    enabled: false,
-    messages: {},
-    formats: {}
-  };
-}
 
 export function optionsFor(options) {
   if (typeOf(options) === 'string') {

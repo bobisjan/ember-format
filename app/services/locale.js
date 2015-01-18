@@ -8,7 +8,7 @@ var observer = Ember.observer;
 
 export default Ember.Object.extend({
 
-  locales: {},
+  locales: null,
 
   code: null,
 

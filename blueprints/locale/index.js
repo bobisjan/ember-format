@@ -2,6 +2,7 @@ var chalk = require('chalk');
 var cldr = require('cldr');
 var fs = require('fs-extra');
 var path = require('path');
+var Blueprint = require('ember-cli/lib/models/blueprint');
 var Promise = require('ember-cli/lib/ext/promise');
 var serialize = require('serialize-javascript');
 var SilentError = require('ember-cli/lib/errors/silent');
@@ -9,10 +10,12 @@ var SilentError = require('ember-cli/lib/errors/silent');
 var removeFile = Promise.denodeify(fs.remove);
 var writeFile = Promise.denodeify(fs.outputFile);
 
-module.exports = {
+module.exports = Blueprint.extend({
   description: 'Generate a locale with CLDR data',
 
   normalizeEntityName: function(entityName) {
+    entityName = this._super.normalizeEntityName(entityName);
+
     if (!this.isKnownLocaleCode(entityName)) {
       throw new SilentError('The `ember generate locale` command does not ' +
       'know locale `' + entityName + '`.');
@@ -74,7 +77,7 @@ module.exports = {
   },
 
   isKnownLocaleCode: function(code) {
-    if (!code || code === 'root') {
+    if (code === 'root') {
       return false;
     }
 
@@ -135,4 +138,4 @@ module.exports = {
     return path.join('app', 'locales', code + '-cldr.js');
   }
 
-};
+});

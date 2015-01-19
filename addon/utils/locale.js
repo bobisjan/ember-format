@@ -48,6 +48,10 @@ export function setup(container, locale, formats) {
     _data = container.resolve('locale:' + _key);
 
     if (!_cldr || !_data) {
+      _locale.enabled = false;
+      _locale.cldr = null;
+      _locale.messages = null;
+      _locale.formats = null;
       continue;
     }
 

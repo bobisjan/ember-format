@@ -20,7 +20,7 @@ export function format(params, hash/*, options, env*/) {
 // Find a better way to define bound helper with custom stream,
 // not just copying from Ember's makeBoundHelper.
 export default function formatHelper(params, hash, options, env) {
-  var view = this;
+  var view = this || env.data.view;
   var numParams = params.length;
   var param, prop;
 
@@ -30,7 +30,7 @@ export default function formatHelper(params, hash, options, env) {
     return format.call(view, readArray(params), readHash(hash), options, env);
   }
 
-  var localeStream = get(this, 'locale.stream');
+  var localeStream = get(view, 'locale.stream');
   var lazyValue = new Stream(valueFn);
 
   localeStream.subscribe(lazyValue.notify, lazyValue);

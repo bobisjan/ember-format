@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import { initialize } from 'dummy/initializers/helper';
+import { module, skip } from 'qunit';
 
 var container, application;
 
 module('HelperInitializer', {
-  setup: function() {
+  beforeEach: function() {
     Ember.run(function() {
       application = Ember.Application.create();
       container = application.__container__;
@@ -13,8 +14,8 @@ module('HelperInitializer', {
   }
 });
 
-test('it registers format helper', function() {
+skip('it registers format helper', function(assert) {
   initialize(container, application);
 
-  ok(Ember.HTMLBars.helpers['format']);
+  assert.ok(Ember.HTMLBars.helpers['format']);
 });

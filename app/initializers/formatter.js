@@ -13,7 +13,7 @@ export function initialize(container, application) {
 }
 
 export default {
-  name: 'formatter',
-  after: 'locale',
+  name: 'ember-format-formatter',
+  after: 'ember-format-locale',
   initialize: initialize
 };

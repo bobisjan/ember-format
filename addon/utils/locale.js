@@ -27,9 +27,11 @@ export function optionsFor(options) {
       }
     }
 
-    return keys.map(function(item) {
+    var items = keys.map(function(item) {
       return this[item];
     }, this);
+
+    return Ember.A(items);
   };
 
   return options;

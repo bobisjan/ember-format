@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import formatHelper from './format';
 
 export default function formatMessageHelper(params, hash, options, env) {

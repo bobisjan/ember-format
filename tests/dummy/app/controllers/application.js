@@ -11,17 +11,18 @@ export default Ember.Controller.extend({
     this.set('selectedLocale', code);
   },
 
-  locales: function() {
+  locales: Ember.computed('locale.locales.@each.enabled', function() {
     var locales = this.get('locale.locales');
+    var enabled = locales.toArray().filterBy('enabled', true);
 
-    return locales.toArray().filterBy('enabled', true);
-  }.property('locale.locales.@each.enabled'),
+    return Ember.A(enabled);
+  }),
 
-  selectedLocaleDidChange: function() {
+  selectedLocaleDidChange: Ember.observer('selectedLocale', function() {
     var code = this.get('selectedLocale');
     var locale = this.get('locale');
 
     locale.set('code', code);
-  }.observes('selectedLocale')
+  })
 
 });

@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import { initialize } from 'dummy/initializers/formatter';
+import { module, test } from 'qunit';
 
 var container, application;
 
 module('FormatterInitializer', {
-  setup: function() {
+  beforeEach: function() {
     Ember.run(function() {
       application = Ember.Application.create();
       container = application.__container__;
@@ -14,11 +15,11 @@ module('FormatterInitializer', {
   }
 });
 
-test('it registers formatters', function() {
+test('it registers formatters', function(assert) {
   initialize(container, application);
 
-  ok(container.lookup('formatter:date'));
-  ok(container.lookup('formatter:message'));
-  ok(container.lookup('formatter:number'));
-  ok(container.lookup('formatter:relative'));
+  assert.ok(container.lookup('formatter:date'));
+  assert.ok(container.lookup('formatter:message'));
+  assert.ok(container.lookup('formatter:number'));
+  assert.ok(container.lookup('formatter:relative'));
 });
